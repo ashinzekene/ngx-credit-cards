@@ -1,7 +1,7 @@
 {
-  "name": "angular4-paystack",
+  "name": "ngx-credit-cards",
   "version": "1.2.0",
-  "description": "an angular 4 module for paystack transactions",
+  "description": "an angular 2+ module to add credit card forms and validation",
   "main": "index.ts",
   "scripts": {
     "tsc": "ngc",
@@ -11,12 +11,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ashinzekene/angular4-paystack.git"
+    "url": "git+https://github.com/ashinzekene/ngx-credit-cards.git"
   },
   "keywords": [
     "angular",
     "angular4",
-    "paystack",
+    "credit cards",
+    "money",
+    "mastercard",
+    "visacard",
     "transactions",
     "payments",
     "angular2"
@@ -24,9 +27,9 @@
   "author": "Ashinze Ekene",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/ashinzekene/angular4-paystack/issues"
+    "url": "https://github.com/ashinzekene/ngx-credit-cards/issues"
   },
-  "homepage": "https://github.com/ashinzekene/angular4-paystack#readme",
+  "homepage": "https://github.com/ashinzekene/ngx-credit-cards#readme",
   "peerDependencies": {
     "@angular/core": "^4.2.2",
     "@angular/common": "^4.2.4",
