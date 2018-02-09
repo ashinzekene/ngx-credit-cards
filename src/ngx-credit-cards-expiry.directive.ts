@@ -2,12 +2,13 @@ import { Directive, ElementRef, HostListener, Output, EventEmitter } from '@angu
 import paymentFormatter from 'payment-formatter';
 import * as cardValidator from 'card-validator';
 import { NgxCreditCardsService } from "./ngx-credit-cards.service";
+import { FormatterOptions } from './models';
 
 @Directive({
   selector: '[ngxCardExpiry]'
 })
 export class CreditCardExpiryDirective {
-  @Output() cvxpiryChange: EventEmitter<any> = new EventEmitter()
+  @Output() cvxpiryChange: EventEmitter<FormatterOptions> = new EventEmitter()
   maxLength: number = 3
   
   constructor(private cardService: NgxCreditCardsService, el: ElementRef) {
@@ -22,7 +23,6 @@ export class CreditCardExpiryDirective {
     let { value } = e.target
     let validObj = cardValidator.cvv({ maxLength: this.maxLength, value })
     this.cardService.cvv = value
-    this.cardService.cardValidity = validObj
     this.cvxpiryChange.emit(validObj)
   }
   

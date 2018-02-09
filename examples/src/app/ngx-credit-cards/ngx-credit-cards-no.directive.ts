@@ -1,14 +1,20 @@
 import { Directive, ElementRef, Output, EventEmitter, HostListener } from '@angular/core';
 import paymentFormatter from 'payment-formatter';
 import * as cardValidator from 'card-validator';
+import { NgxCreditCardsService } from "./ngx-credit-cards.service";
+import { FormatterOptions } from './models';
 
 @Directive({
   selector: '[ngxCardNo]'
 })
 export class CreditCardNoDirective {
-  @Output() numberChange: EventEmitter<any> = new EventEmitter()
+  @Output() numberChange: EventEmitter<FormatterOptions> = new EventEmitter()
+  formatter: FormatterOptions = {
+    inputType: 'cvc',
+    selector: '.ngx-credit-card-cvv'
+  }
 
-  constructor(el: ElementRef) {
+  constructor(private cardService: NgxCreditCardsService, el: ElementRef) {
     el.nativeElement.classList.add('ngx-credit-card-no')
     paymentFormatter({
       inputType: 'cardNumber',
@@ -17,8 +23,15 @@ export class CreditCardNoDirective {
   }
 
   @HostListener('keyup', ['$event']) keyUp(e: any) {
-    console.log("KEY UP")
-    this.numberChange.emit(cardValidator.number(e.target.value))
+    let { value } = e.target
+    this.cardService.cardNumber = value
+    this.cardService.cardValidity = cardValidator.number(value)
+    this.numberChange.emit(cardValidator.number(value))
+    let { cardValidity } = this.cardService
+    if (cardValidity && cardValidity.card && cardValidity.card.type) {
+      this.formatter.cardType = cardValidity.card.type
+      paymentFormatter(this.formatter)
+    }
   }
 
 }
