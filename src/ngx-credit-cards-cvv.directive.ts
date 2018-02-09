@@ -1,24 +1,16 @@
-import { Directive, ElementRef, HostListener, Host } from '@angular/core';
+import { Directive, ElementRef } from '@angular/core';
 import paymentFormatter from 'payment-formatter';
 
 @Directive({
   selector: '[ngxCardCvv]'
 })
 export class CreditCardCvvDirective {
-  constructor(el: ElementRef) {
-    el.nativeElement.classList.add('ngx-credit-card-cvv')
-    el.nativeElement.style.backgroundColor = "red"
-    console.log('added to class')
+  constructor(private el: ElementRef) {
+    this.el.nativeElement.classList.add('ngx-credit-card-cvv')
     paymentFormatter({
-      inputType: 'cardNumber',
-      selector: 'input.ngx-credit-card-no'
+      inputType: 'cvc',
+      selector: '.ngx-credit-card-cvv'
     })
   }
-
-  @HostListener('onkeyup', ['$event'])
-  onkeyup(event: any) {
-    console.log("Key up card cvv")
-  }
-  
 
 }

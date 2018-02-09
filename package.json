@@ -48,6 +48,7 @@
     "zone.js": "^0.8.10"
   },
   "dependencies": {
+    "card-validator": "^4.3.0",
     "payment-formatter": "^1.0.2"
   },
   "$schema": "./node_modules/ng-packagr/package.schema.json",

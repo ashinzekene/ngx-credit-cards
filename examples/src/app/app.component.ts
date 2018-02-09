@@ -10,10 +10,8 @@ export class AppComponent {
   result = ""
   constructor(private appRef: ApplicationRef) {}
 
-  paymentDone(ref) {
+  checkNumber(ref) {
     console.log(ref)
-    this.setTitle(`Payment Complete ${ref}`)
-    console.log(this.title)
   }
 
   resetTitle() {

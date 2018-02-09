@@ -1,23 +1,16 @@
-import { Directive, ElementRef, HostListener, Host } from '@angular/core';
+import { Directive, ElementRef } from '@angular/core';
 import paymentFormatter from 'payment-formatter';
 
 @Directive({
   selector: '[ngxCardExpiry]'
 })
 export class CreditCardExpiryDirective {
-  constructor(el: ElementRef) {
-    el.nativeElement.classList.add('ngx-credit-card-expiry')
-    console.log('added to class')
+  constructor(private el: ElementRef) {
+    this.el.nativeElement.classList.add('ngx-credit-card-expiry')
     paymentFormatter({
       inputType: 'expiry',
-      selector: 'input.ngx-credit-card-expiry'
+      selector: '.ngx-credit-card-expiry'
     })
-  }
-
-
-  @HostListener('onkeyup', ['$event'])
-  onkeyup(event: any) {
-    console.log("Key up card expiry")
   }
   
 }
