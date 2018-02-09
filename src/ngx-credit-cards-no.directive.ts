@@ -20,7 +20,7 @@ export class CreditCardNoDirective {
   @HostListener('keyup', ['$event']) keyUp(e: any) {
     let { value } = e.target 
     this.cardService.cardNumber = value
-    this.cardService.cardValue = cardValidator.number(value)
+    this.cardService.cardValidity = cardValidator.number(value)
     this.numberChange.emit(cardValidator.number(value))
   }
 
