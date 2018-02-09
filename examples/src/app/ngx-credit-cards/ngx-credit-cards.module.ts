@@ -10,4 +10,4 @@ import { CreditCardNoDirective } from "./ngx-credit-cards-no.directive";
   declarations: [CreditCardCvvDirective, CreditCardExpiryDirective, CreditCardNoDirective],
   providers: [],
 })
-export class Angular4PaystackModule { }
+export class NgxCreditCardsModule { }
