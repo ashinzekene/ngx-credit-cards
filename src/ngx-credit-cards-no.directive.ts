@@ -1,7 +1,7 @@
 import { Directive, ElementRef, Output, EventEmitter, HostListener } from '@angular/core';
 import paymentFormatter from 'payment-formatter';
 import * as cardValidator from 'card-validator';
-import { NgxCreditCardsService } from "./ngx-credit-cards-cvv.service";
+import { NgxCreditCardsService } from "./ngx-credit-cards.service";
 
 @Directive({
   selector: '[ngxCardNo]'
