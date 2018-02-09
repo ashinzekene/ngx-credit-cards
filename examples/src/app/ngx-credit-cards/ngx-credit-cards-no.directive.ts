@@ -16,8 +16,7 @@ export class CreditCardNoDirective {
     })
   }
 
-  @HostListener('onKeyUp', ['$event'])
-  private keyUp(e: any) {
+  @HostListener('keyup', ['$event']) keyUp(e: any) {
     console.log("KEY UP")
     this.numberChange.emit(cardValidator.number(e.target.value))
   }
