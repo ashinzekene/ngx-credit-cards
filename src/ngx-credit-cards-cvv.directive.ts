@@ -1,5 +1,4 @@
 import { Directive, ElementRef, Output, EventEmitter, HostListener, Input } from '@angular/core';
-import paymentFormatter from 'payment-formatter';
 import * as cardValidator from 'card-validator';
 import { NgxCreditCardsService } from "./ngx-credit-cards.service";
 import { FormatterOptions } from "./models";

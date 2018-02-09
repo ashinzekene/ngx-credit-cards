@@ -1,6 +1,6 @@
 {
   "name": "ngx-credit-cards",
-  "version": "1.2.0",
+  "version": "0.0.1",
   "description": "an angular 2+ module to add credit card forms and validation",
   "main": "index.ts",
   "scripts": {
@@ -42,7 +42,6 @@
     "@angular/core": "^4.1.1",
     "@angular/platform-server": "^4.2.6",
     "@types/node": "7.0.10",
-    "ng-packagr": "^2.0.0",
     "rxjs": "^5.3.1",
     "typescript": "^2.4.1",
     "zone.js": "^0.8.10"
@@ -50,11 +49,5 @@
   "dependencies": {
     "card-validator": "^4.3.0",
     "payment-formatter": "^1.0.2"
-  },
-  "$schema": "./node_modules/ng-packagr/package.schema.json",
-  "ngPackage": {
-    "lib": {
-      "entryFile": "src/index.ts"
-    }
   }
 }
