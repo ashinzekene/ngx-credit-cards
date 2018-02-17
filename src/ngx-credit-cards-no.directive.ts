@@ -2,13 +2,13 @@ import { Directive, ElementRef, Output, EventEmitter, HostListener } from '@angu
 import paymentFormatter from 'payment-formatter';
 import * as cardValidator from 'card-validator';
 import { NgxCreditCardsService } from "./ngx-credit-cards.service";
-import { FormatterOptions } from './models';
+import { FormatterOptions, ValidityOptions } from './models';
 
 @Directive({
   selector: '[ngxCardNo]'
 })
 export class CreditCardNoDirective {
-  @Output() numberChange: EventEmitter<FormatterOptions> = new EventEmitter()
+  @Output() numberChange: EventEmitter<ValidityOptions> = new EventEmitter()
   formatter: FormatterOptions = {
     inputType: 'cvc',
     selector: '.ngx-credit-card-cvv'
@@ -20,6 +20,30 @@ export class CreditCardNoDirective {
       inputType: 'cardNumber',
       selector: '.ngx-credit-card-no'
     })
+  }
+
+  
+  formatNumber = number => {
+    const { length: maxLength, type } = this.state;
+    let formattedNumber = number;
+
+    if (number && number.length > maxLength) {
+      formattedNumber = number.slice(0, maxLength);
+    }
+
+    formattedNumber = padEnd(formattedNumber, maxLength, '•');
+
+    if (type === 'amex') {
+      formattedNumber = `${formattedNumber.substring(0, 4)} ${formattedNumber.substring(4, 10)} ${formattedNumber.substring(10)}`;
+    } else {
+      const amountOfSpaces = Math.ceil(maxLength / 4);
+      times(amountOfSpaces, i => {
+        const spaceIndex = ((i * 4) + i);
+        formattedNumber = `${formattedNumber.slice(0, spaceIndex)} ${formattedNumber.slice(spaceIndex)}`;
+      });
+    }
+
+    return formattedNumber;
   }
 
   @HostListener('keyup', ['$event']) keyUp(e: any) {

@@ -5,7 +5,7 @@ export class FormatterOptions {
 }
 
 export class ValidityOptions {
-  card: {
+  card?: {
     niceType: string,
     type: string,
     gaps: number[],
