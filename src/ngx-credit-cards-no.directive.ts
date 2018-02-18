@@ -22,30 +22,6 @@ export class CreditCardNoDirective {
     })
   }
 
-  
-  formatNumber = number => {
-    const { length: maxLength, type } = this.state;
-    let formattedNumber = number;
-
-    if (number && number.length > maxLength) {
-      formattedNumber = number.slice(0, maxLength);
-    }
-
-    formattedNumber = padEnd(formattedNumber, maxLength, '•');
-
-    if (type === 'amex') {
-      formattedNumber = `${formattedNumber.substring(0, 4)} ${formattedNumber.substring(4, 10)} ${formattedNumber.substring(10)}`;
-    } else {
-      const amountOfSpaces = Math.ceil(maxLength / 4);
-      times(amountOfSpaces, i => {
-        const spaceIndex = ((i * 4) + i);
-        formattedNumber = `${formattedNumber.slice(0, spaceIndex)} ${formattedNumber.slice(spaceIndex)}`;
-      });
-    }
-
-    return formattedNumber;
-  }
-
   @HostListener('keyup', ['$event']) keyUp(e: any) {
     let { value } = e.target
     this.cardService.cardNumber = value
