@@ -2,13 +2,13 @@ import { Directive, ElementRef, Output, EventEmitter, HostListener } from '@angu
 import paymentFormatter from 'payment-formatter';
 import * as cardValidator from 'card-validator';
 import { NgxCreditCardsService } from "./ngx-credit-cards.service";
-import { FormatterOptions } from './models';
+import { FormatterOptions, ValidityOptions } from './models';
 
 @Directive({
   selector: '[ngxCardNo]'
 })
 export class CreditCardNoDirective {
-  @Output() numberChange: EventEmitter<FormatterOptions> = new EventEmitter()
+  @Output() numberChange: EventEmitter<ValidityOptions> = new EventEmitter()
   formatter: FormatterOptions = {
     inputType: 'cvc',
     selector: '.ngx-credit-card-cvv'

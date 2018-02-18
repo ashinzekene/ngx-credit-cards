@@ -5,6 +5,7 @@
   "main": "index.ts",
   "scripts": {
     "tsc": "ngc",
+    "try": "node try-example",
     "package": "ng-packagr -p package.json",
     "publish-patch": "npm run tsc && node process && cd lib && npm version patch && npm publish",
     "publish-minor": "npm run tsc && node process && cd lib && npm version minor && npm publish"
