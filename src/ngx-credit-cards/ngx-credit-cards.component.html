@@ -1,20 +1,22 @@
-<div class="react-credit-card__container">
-  <div [ngClass]="{ 'react-credit-card': true, 'react-credit-card--unknown': true, 'react-credit-card--flipped': false }">
-    <div class="react-credit-card__front">
-      <div class="react-credit-card__lower">
-        <div class="react-credit-card__shiny"></div>
-        <img src="images[type]" [ngClass]="{ 'react-credit-card__logo': true, 'react-credit-card--unknown': true }" />
-        <div *ngIf="isAmex" [ngClass]="{ 'react-credit-card__cvc_front': true, 'react-credit-card__display': true, 'react-credit-card--focused': false }">437</div>
-        <div [ngClass]="{ 'react-credit-card__number': true, 'react-credit-card__display': true, 'react-credit-card--focused': true }">1224 3445 3455 3545</div>
-        <div *ngIf="!hideName" [ngClass]="{ 'react-credit-card__name': true, 'react-credit-card__display': true, 'react-credit-card--focused': true }">ASHINZE EKENE ONYELUKA</div>"
-        <div [ngClass]="{ 'react-credit-card__expiry': true, 'react-credit-card__display': true, 'react-credit-card--focused': true }" data-before="expiryBeforeText" data-after="expiryAfterText">
-          21/11/18 
+<div class="ng-credit-card__container">
+  <div [ngClass]="{ 'ng-credit-card': true, 'ng-credit-card--discover': true, 'ng-credit-card--flipped': false }">
+    <div class="ng-credit-card__front">
+      <div class="ng-credit-card__lower">
+        <div class="ng-credit-card__shiny"></div>
+        <img [src]="images['discover']" [ngClass]="{ 'ng-credit-card__logo': true, 'ng-credit-card--discover': true }" />
+        <div *ngIf="isdiscover" [ngClass]="{ 'ng-credit-card__cvc_front': true, 'ng-credit-card__display': true, 'ng-credit-card--focused': false }">437</div>
+        <div [ngClass]="{ 'ng-credit-card__number': true, 'ng-credit-card__display': true, 'ng-credit-card--focused': true }">1224 3445 3455 3545</div>
+        <div *ngIf="!hideName" [ngClass]="{ 'ng-credit-card__name': true, 'ng-credit-card__display': true, 'ng-credit-card--focused': true }">ASHINZE EKENE ONYELUKA</div>
+        <div [ngClass]="{ 'ng-credit-card__expiry': true, 'ng-credit-card__display': true, 'ng-credit-card--focused': true }"
+          data-before="expiryBeforeText" data-after="expiryAfterText">
+          21/11/18
         </div>
       </div>
     </div>
-    <div class="react-credit-card__back">
-      <div class="react-credit-card__bar"></div>
-      <div [ngClass]="{ 'react-credit-card__cvc': true, 'react-credit-card__display': true, 'react-credit-card--focused': true }">552</div>
-      <div class="react-credit-card__shiny" data-after="backDescriptionText"></div>
+    <div class="ng-credit-card__back">
+      <div class="ng-credit-card__bar"></div>
+      <div [ngClass]="{ 'ng-credit-card__cvc': true, 'ng-credit-card__display': true, 'ng-credit-card--focused': true }">552</div>
+      <div class="ng-credit-card__shiny" data-after="backDescriptionText"></div>
     </div>
+  </div>
 </div>

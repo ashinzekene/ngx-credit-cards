@@ -1,4 +1,4 @@
-.react-credit-card__container{
+.ng-credit-card__container{
   position: relative;
   -webkit-perspective: 1000px;
   perspective: 1000px;
@@ -6,7 +6,7 @@
   height: 200px;
 }
 
-.react-credit-card{
+.ng-credit-card{
   border-radius: 10px;
   line-height: 1;
   position: relative;
@@ -23,14 +23,14 @@
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
 }
 
-.react-credit-card--flipped{
+.ng-credit-card--flipped{
   -webkit-transform: rotateY(180deg);
   -ms-transform: rotateY(180deg);
   transform: rotateY(180deg);
 }
 
-.react-credit-card__front,
-.react-credit-card__back{
+.ng-credit-card__front,
+.ng-credit-card__back{
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
   transform-style: preserve-3d;
@@ -50,13 +50,13 @@
   z-index: 0;
 }
 
-.react-credit-card__back{
+.ng-credit-card__back{
   -webkit-transform: rotateY(180deg);
   -ms-transform: rotateY(180deg);
   transform: rotateY(180deg);
 }
 
-.react-credit-card__back:before{
+.ng-credit-card__back:before{
   content: " ";
   display: block;
   background-color: #FFF;
@@ -70,7 +70,7 @@
   left: 2%;
 }
 
-.react-credit-card__display{
+.ng-credit-card__display{
   color: white;
   font-weight: normal;
   opacity: 0.5;
@@ -78,20 +78,20 @@
   transition: opacity 400ms linear;
 }
 
-.react-credit-card__logo{
+.ng-credit-card__logo{
   position: absolute;
   right: 0;
   top: 0;
 }
 
-.react-credit-card__number{
+.ng-credit-card__number{
   font-family: "Bitstream Vera Sans Mono", Consolas, Courier, monospace;
   font-size: 24px;
   clear: both;
   margin-bottom: 30px;
 }
 
-.react-credit-card__name{
+.ng-credit-card__name{
   text-transform: uppercase;
   font-family: "Bitstream Vera Sans Mono", Consolas, Courier, monospace;
   font-size: 20px;
@@ -106,7 +106,7 @@
   line-height: 1.2em;
 }
 
-.react-credit-card__expiry{
+.ng-credit-card__expiry{
   font-family: "Bitstream Vera Sans Mono", Consolas, Courier, monospace;
   letter-spacing: 0em;
   position: relative;
@@ -114,14 +114,14 @@
   width: 25%;
 }
 
-.react-credit-card__expiry:before {
+.ng-credit-card__expiry:before {
   content: attr(data-before);
   margin-bottom: 2px;
   font-size: 7px;
   text-transform: uppercase;
 }
 
-.react-credit-card__expiry:after {
+.ng-credit-card__expiry:after {
   position: absolute;
   content: attr(data-after);
   text-align: right;
@@ -131,7 +131,7 @@
   bottom: 0;
 }
 
-.react-credit-card__expiry:before, .react-credit-card__expiry:after{
+.ng-credit-card__expiry:before, .ng-credit-card__expiry:after{
   font-family: "Helvetica Neue";
   font-weight: bold;
   font-size: 7px;
@@ -140,19 +140,19 @@
   opacity: 0.5;
 }
 
-.react-credit-card--focused{
+.ng-credit-card--focused{
   opacity: 1;
   font-weight: 700;
 }
 
-.react-credit-card__lower{
+.ng-credit-card__lower{
   width: 80%;
   position: absolute;
   left: 10%;
   bottom: 30px;
 }
 
-.react-credit-card__shiny{
+.ng-credit-card__shiny{
   width: 50px;
   height: 35px;
   margin-bottom: 10px;
@@ -161,7 +161,7 @@
   position: relative;
 }
 
-.react-credit-card__shiny:after {
+.ng-credit-card__shiny:after {
   content: attr(data-after);
   position: absolute;
   left: 120%;
@@ -172,7 +172,7 @@
   opacity: 0.5;
 }
 
-.react-credit-card__shiny:before{
+.ng-credit-card__shiny:before{
   content: " ";
   display: block;
   width: 70%;
@@ -184,7 +184,7 @@
   top: 20%;
 }
 
-.react-credit-card__bar{
+.ng-credit-card__bar{
   background-color: #444;
   background-image: -webkit-linear-gradient(#444, #333);
   background-image: -webkit-gradient(linear, left top, left bottom, from(#444), to(#333));
@@ -195,13 +195,13 @@
   top: 10%;
 }
 
-.react-credit-card__back .react-credit-card__shiny{
+.ng-credit-card__back .ng-credit-card__shiny{
   position: absolute;
   top: 66%;
   left: 2%;
 }
 
-.react-credit-card__cvc{
+.ng-credit-card__cvc{
   position: absolute;
   top: 40%;
   left: 85%;
@@ -211,7 +211,7 @@
   font-size: 14px;
 }
 
-.react-credit-card__cvc_front {
+.ng-credit-card__cvc_front {
   position: absolute;
   top: 19%;
   right: 18%;
@@ -221,18 +221,39 @@
   font-size: 14px;
 }
 
-.react-credit-card--unknown{
+.ng-credit-card--unknown{
   -webkit-box-shadow: none;
   box-shadow: none;
 }
 
-.react-credit-card--unknown .react-credit-card__logo {
+.ng-credit-card--unknown .ng-credit-card__logo {
   visibility: hidden;
 }
 
-.react-credit-card__front,
-.react-credit-card__back {
+.ng-credit-card__front,
+.ng-credit-card__back {
   background: linear-gradient(to right, #6290e4, #2053B1);
 }
+.ng-credit-card--mastercard .ng-credit-card__front,
+.ng-credit-card--mastercard .ng-credit-card__back {
+  background: linear-gradient(to right, #2fa7ff, #0061A8)
+}
+.ng-credit-card--amex .ng-credit-card__front,
+.ng-credit-card--amex .ng-credit-card__back {
+  background: #108168;
+}
+.ng-credit-card--discover .ng-credit-card__front,
+.ng-credit-card--discover .ng-credit-card__back {
+  background: #86B8CF;
+}
+.ng-credit-card--visa .ng-credit-card__front,
+.ng-credit-card--visa .ng-credit-card__back {
+  background: linear-gradient(to right, #2653d0, #191278);
+}
 
-@import './card-types.scss';
+.ng-credit-card__logo.ng-credit-card--mastercard {
+  width: 50px;
+}
+.ng-credit-card__logo.ng-credit-card--visa {
+  width: 70px;
+}
