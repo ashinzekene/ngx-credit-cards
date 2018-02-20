@@ -251,8 +251,8 @@
   background: linear-gradient(to right, #2653d0, #191278);
 }
 
-.ng-credit-card__logo.ng-credit-card--mastercard {
-  width: 50px;
+.ng-credit-card__logo.ng-credit-card--master-card {
+  width: 50px !important;
 }
 .ng-credit-card__logo.ng-credit-card--visa {
   width: 70px;

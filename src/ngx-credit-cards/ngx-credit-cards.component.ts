@@ -16,6 +16,9 @@ export class NgxCreditCardsComponent implements OnInit {
   // public expiry: string = this.ngxccService.expiry
   public type: string = ''
   public length: number = 16
+  public isAmex: boolean = false
+  public creditCardClassObject: any = {}
+  public imageClassObject: any = {}
   @Input() hideName: false
   @Input() focused: string = null
   @Input() namePlaceholder: string = 'FULL NAME'
@@ -36,6 +39,15 @@ export class NgxCreditCardsComponent implements OnInit {
     this.cvv = padEnd(this.ngxccService.expiry, 3, '•')
   }
 
+  addClass() {
+    let name = 'ng-credit-card--'+this.type
+    this.imageClassObject = { 'ng-credit-card__logo': true, [name]: true }
+    this.creditCardClassObject = { 'ng-credit-card': true, [name]: true, 'ng-credit-card--flipped': false }
+    console.log('Type', this.type)
+    console.table(this.imageClassObject)
+    console.table(this.creditCardClassObject)
+  }
+
   ngOnInit() {
     this.images = images
     this.hideName = this.hideName || false
@@ -45,6 +57,7 @@ export class NgxCreditCardsComponent implements OnInit {
     this.ngxccService.cardValiditySubject.subscribe(cardValidity => {
       if (cardValidity && cardValidity.card && cardValidity.card.type ) {
         this.type = cardValidity.card.type
+        this.addClass()
       }
     })
   }
