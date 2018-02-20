@@ -8,7 +8,7 @@ import { ValidityOptions } from './models';
   selector: '[ngxCardExpiry]'
 })
 export class CreditCardExpiryDirective {
-  @Output() cvxpiryChange: EventEmitter<ValidityOptions> = new EventEmitter()
+  @Output() expiryChange: EventEmitter<ValidityOptions> = new EventEmitter()
   maxLength: number = 3
   
   constructor(private cardService: NgxCreditCardsService, el: ElementRef) {
@@ -23,7 +23,7 @@ export class CreditCardExpiryDirective {
     let { value } = e.target
     let validObj = cardValidator.cvv({ maxLength: this.maxLength, value })
     this.cardService.cvv = value
-    this.cvxpiryChange.emit(validObj)
+    this.expiryChange.emit(validObj)
   }
   
 }

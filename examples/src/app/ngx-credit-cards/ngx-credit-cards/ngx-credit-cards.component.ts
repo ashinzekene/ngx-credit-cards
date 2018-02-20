@@ -13,8 +13,8 @@ export class NgxCreditCardsComponent implements OnInit {
   public cvv: string = ''
   public name: string = ''
   public number: string = ''
-  public expiry: string = this.ngxccService.expiry
-  public type: string = 'mastercard'
+  // public expiry: string = this.ngxccService.expiry
+  public type: string = ''
   public length: number = 16
   @Input() hideName: false
   @Input() focused: string = null
@@ -42,5 +42,14 @@ export class NgxCreditCardsComponent implements OnInit {
     this.namePlaceholder = this.namePlaceholder || 'FULL NAME'
     this.expiryBeforeText = this.expiryBeforeText || 'month/year'
     this.expiryAfterText = this.expiryAfterText || 'valid thru'
+    this.ngxccService.cardValiditySubject.subscribe(cardValidity => {
+      if (cardValidity && cardValidity.card && cardValidity.card.type ) {
+        this.type = cardValidity.card.type
+      }
+    })
+  }
+
+  ngOnDestroy() {
+    this.ngxccService.cardValiditySubject.unsubscribe()
   }
 }

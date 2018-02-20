@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { ValidityOptions } from './models';
+import { Subject } from 'rxjs/Subject';
 
 @Injectable()
 export class NgxCreditCardsService {
   private _cardNumber: string | number
   private _cvv: number
   private _expiry: string
-  private _cardValidity: ValidityOptions 
+  private _cardValidity: Subject<ValidityOptions> = new Subject()
   constructor() { }
 
   /**
@@ -62,17 +63,16 @@ export class NgxCreditCardsService {
   /**
    * @description Return the card validity object
    */
-  get cardValidity(): ValidityOptions {
+  get cardValiditySubject(): Subject<ValidityOptions> {
     return this._cardValidity
   }
-
 
   /**
    * @description sets the value of the card validity object
    * @param value The card validity object from the 'card-validator' library
    */
   set cardValidity(value: ValidityOptions) {
-    this._cardValidity = value
+    this._cardValidity.next(value)
   }
 
 }

@@ -7,7 +7,7 @@ export class FormatterOptions {
 export class ValidityOptions {
   card?: {
     niceType: string,
-    type: string,
+    type: 'visa'|'discover'|'american-express'|'amex',
     gaps: number[],
     lengths: number[],
     code: { name: string, size: number}

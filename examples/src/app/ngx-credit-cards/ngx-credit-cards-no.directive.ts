@@ -8,7 +8,7 @@ import { FormatterOptions, ValidityOptions } from './models';
   selector: '[ngxCardNo]'
 })
 export class CreditCardNoDirective {
-  @Output() numberChange: EventEmitter<ValidityOptions> = new EventEmitter()
+  @Output() numChange: EventEmitter<ValidityOptions> = new EventEmitter()
   formatter: FormatterOptions = {
     inputType: 'cvc',
     selector: '.ngx-credit-card-cvv'
@@ -22,16 +22,24 @@ export class CreditCardNoDirective {
     })
   }
 
+  /**
+   * This runs on keyup of the element conatining the directive
+   * 
+   */
   @HostListener('keyup', ['$event']) keyUp(e: any) {
     let { value } = e.target
     this.cardService.cardNumber = value
+    // This sets the validity Subject using .next operator
     this.cardService.cardValidity = cardValidator.number(value)
-    this.numberChange.emit(cardValidator.number(value))
-    let { cardValidity } = this.cardService
-    if (cardValidity && cardValidity.card && cardValidity.card.type) {
-      this.formatter.cardType = cardValidity.card.type
-      paymentFormatter(this.formatter)
-    }
+    this.numChange.emit(cardValidator.number(value))
+    let { cardValiditySubject } = this.cardService
+    cardValiditySubject.subscribe(cardValidity => {
+      if (cardValidity && cardValidity.card && cardValidity.card.type) {
+        this.formatter.cardType = cardValidity.card.type
+        paymentFormatter(this.formatter)
+      }
+
+    })
   }
 
 }
