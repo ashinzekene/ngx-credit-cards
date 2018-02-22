@@ -22,24 +22,30 @@ export class CreditCardNoDirective {
     })
   }
 
-  /**
-   * This runs on keyup of the element conatining the directive
-   * 
-   */
+  //  This runs on keyup of the element conatining the directive and outputs the card number validity
   @HostListener('keyup', ['$event']) keyUp(e: any) {
     let { value } = e.target
     this.cardService.cardNumber = value
-    // This sets the validity Subject using .next operator
-    this.cardService.cardValidity = cardValidator.number(value)
+    // This sets the validity Subject using .next operator. This is done in the card service
+    this.cardService.cardOptions = [cardValidator.number(value), false]
     this.numChange.emit(cardValidator.number(value))
-    let { cardValiditySubject } = this.cardService
-    cardValiditySubject.subscribe(cardValidity => {
+    // This formats the card cvv based on the type of card
+    let { cardOptionsSubject } = this.cardService
+    cardOptionsSubject.subscribe(([cardValidity, _]) => {
       if (cardValidity && cardValidity.card && cardValidity.card.type) {
         this.formatter.cardType = cardValidity.card.type
         paymentFormatter(this.formatter)
       }
-
     })
   }
+
+  /**
+   * Flips the card back to the front
+   * @param e Event
+   */
+  @HostListener('focus', ['$event']) cvvFocus(e: any) {
+    this.cardService.cardOptions = [,false]
+  }
+
 
 }

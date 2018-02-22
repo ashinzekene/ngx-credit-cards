@@ -234,12 +234,12 @@
 .ng-credit-card__back {
   background: linear-gradient(to right, #6290e4, #2053B1);
 }
-.ng-credit-card--mastercard .ng-credit-card__front,
-.ng-credit-card--mastercard .ng-credit-card__back {
+.ng-credit-card--master-card .ng-credit-card__front,
+.ng-credit-card--master-card .ng-credit-card__back {
   background: linear-gradient(to right, #2fa7ff, #0061A8)
 }
-.ng-credit-card--amex .ng-credit-card__front,
-.ng-credit-card--amex .ng-credit-card__back {
+.ng-credit-card--american-express .ng-credit-card__front,
+.ng-credit-card--american-express .ng-credit-card__back {
   background: #108168;
 }
 .ng-credit-card--discover .ng-credit-card__front,
@@ -252,7 +252,7 @@
 }
 
 .ng-credit-card__logo.ng-credit-card--master-card {
-  width: 50px !important;
+  width: 50px;
 }
 .ng-credit-card__logo.ng-credit-card--visa {
   width: 70px;

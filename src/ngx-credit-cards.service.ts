@@ -7,9 +7,14 @@ export class NgxCreditCardsService {
   private _cardNumber: string | number
   private _cvv: number
   private _expiry: string
-  private _cardValidity: Subject<ValidityOptions> = new Subject()
+  public goNext: boolean
+  private _cardOptions: Subject<[ValidityOptions, boolean]> = new Subject()
   constructor() { }
 
+  /**
+   * Checks if card c
+   */
+  goBack
   /**
    * @description Return the value of the card number
    */
@@ -63,16 +68,17 @@ export class NgxCreditCardsService {
   /**
    * @description Return the card validity object
    */
-  get cardValiditySubject(): Subject<ValidityOptions> {
-    return this._cardValidity
+  get cardOptionsSubject(): Subject<[ValidityOptions, boolean]> {
+    return this._cardOptions
   }
 
   /**
    * @description sets the value of the card validity object
-   * @param value The card validity object from the 'card-validator' library
+   * @param value An array caontaining the card validit and a boolean: true for card to show front
+   * and false to show back 
    */
-  set cardValidity(value: ValidityOptions) {
-    this._cardValidity.next(value)
+  set cardOptions(value: [ValidityOptions, boolean]) {
+    this._cardOptions.next(value)
   }
 
 }

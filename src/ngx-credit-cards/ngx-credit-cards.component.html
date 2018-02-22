@@ -4,12 +4,12 @@
       <div class="ng-credit-card__lower">
         <div class="ng-credit-card__shiny"></div>
         <img [src]="images[type]" [ngClass]="imageClassObject" />
-        <div *ngIf="!isAmex" [ngClass]="{ 'ng-credit-card__cvc_front': true, 'ng-credit-card__display': true, 'ng-credit-card--focused': false }">437</div>
+        <div *ngIf="type === 'american-express'" [ngClass]="{ 'ng-credit-card__cvc_front': true, 'ng-credit-card__display': true, 'ng-credit-card--focused': false }">437</div>
         <div [ngClass]="{ 'ng-credit-card__number': true, 'ng-credit-card__display': true, 'ng-credit-card--focused': true }">1224 3445 3455 3545</div>
-        <div *ngIf="!hideName" [ngClass]="{ 'ng-credit-card__name': true, 'ng-credit-card__display': true, 'ng-credit-card--focused': true }">ASHINZE EKENE {{ type }}</div>
-        <div [ngClass]="{ 'ng-credit-card__expiry': true, 'ng-credit-card__display': true, 'ng-credit-card--focused': true }"
-          data-before="expiryBeforeText" data-after="expiryAfterText">
-          21/11/18
+        <div *ngIf="!hideName" [ngClass]="{ 'ng-credit-card__name': true, 'ng-credit-card__display': true, 'ng-credit-card--focused': true }">{{ namePlaceholder }}</div>
+        <div [ngClass]="{ 'ng-credit-card__expiry': true, 'ng-credit-card__display': true, 'ng-credit-card--focused': true }" data-before="expiryBeforeText"
+          data-after="expiryAfterText">
+          11/21
         </div>
       </div>
     </div>

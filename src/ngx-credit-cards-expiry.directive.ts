@@ -19,11 +19,21 @@ export class CreditCardExpiryDirective {
     })
   }
 
+  //  This runs on keyup of the element conatining the directive and outputs the card expiry validity
   @HostListener('keyup', ['$event']) keyUp(e: any) {
     let { value } = e.target
     let validObj = cardValidator.cvv({ maxLength: this.maxLength, value })
     this.cardService.cvv = value
     this.expiryChange.emit(validObj)
   }
+
+  /**
+   * Flips the card back to the front
+   * @param e Event
+   */
+  @HostListener('focus', ['$event']) cvvFocus(e: any) {
+    this.cardService.cardOptions = [,false]
+  }
+
   
 }

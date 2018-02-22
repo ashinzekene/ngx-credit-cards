@@ -19,8 +19,8 @@ export class NgxCreditCardsComponent implements OnInit {
   public isAmex: boolean = false
   public creditCardClassObject: any = {}
   public imageClassObject: any = {}
-  @Input() hideName: false
-  @Input() focused: string = null
+  public flipped: boolean = false
+  @Input() hideName: boolean
   @Input() namePlaceholder: string = 'FULL NAME'
   @Input() expiryBeforeText: string = 'month/year'
   @Input() expiryAfterText: string = 'valid thru'
@@ -40,9 +40,9 @@ export class NgxCreditCardsComponent implements OnInit {
   }
 
   addClass() {
-    let name = 'ng-credit-card--'+this.type
+    let name = 'ng-credit-card--' + this.type
     this.imageClassObject = { 'ng-credit-card__logo': true, [name]: true }
-    this.creditCardClassObject = { 'ng-credit-card': true, [name]: true, 'ng-credit-card--flipped': false }
+    this.creditCardClassObject = { 'ng-credit-card': true, [name]: true, 'ng-credit-card--flipped': this.flipped }
     console.log('Type', this.type)
     console.table(this.imageClassObject)
     console.table(this.creditCardClassObject)
@@ -54,15 +54,16 @@ export class NgxCreditCardsComponent implements OnInit {
     this.namePlaceholder = this.namePlaceholder || 'FULL NAME'
     this.expiryBeforeText = this.expiryBeforeText || 'month/year'
     this.expiryAfterText = this.expiryAfterText || 'valid thru'
-    this.ngxccService.cardValiditySubject.subscribe(cardValidity => {
-      if (cardValidity && cardValidity.card && cardValidity.card.type ) {
-        this.type = cardValidity.card.type
-        this.addClass()
+    this.ngxccService.cardOptionsSubject.subscribe(([cardOptions, flipped]) => {
+      this.flipped = flipped
+      if (cardOptions && cardOptions.card && cardOptions.card.type) {
+        this.type = cardOptions.card.type
       }
+      this.addClass()
     })
   }
 
   ngOnDestroy() {
-    this.ngxccService.cardValiditySubject.unsubscribe()
+    this.ngxccService.cardOptionsSubject.unsubscribe()
   }
 }
