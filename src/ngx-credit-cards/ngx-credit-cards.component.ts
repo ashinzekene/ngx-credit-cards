@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Renderer2, ElementRef } from '@angular/core';
 import { NgxCreditCardsService } from "../ngx-credit-cards.service";
 import { padEnd } from "../utils";
 import { images } from "../card-images";
@@ -20,13 +20,13 @@ export class NgxCreditCardsComponent implements OnInit {
   public creditCardClassObject: any = {}
   public imageClassObject: any = {}
   public flipped: boolean = false
-  @Input() hideName: boolean
+  @Input() hideName: boolean = true
   @Input() namePlaceholder: string = 'FULL NAME'
   @Input() expiryBeforeText: string = 'month/year'
   @Input() expiryAfterText: string = 'valid thru'
-  @Input() backDescriptionText: string = null
+  @Input() backDescriptionText: string = 'This card remains a property of my bank'
 
-  constructor(private ngxccService: NgxCreditCardsService) { }
+  constructor(private ngxccService: NgxCreditCardsService, private renderer: Renderer2, private el: ElementRef) { }
 
   formatName() {
   }
@@ -51,7 +51,8 @@ export class NgxCreditCardsComponent implements OnInit {
     this.namePlaceholder = this.namePlaceholder || 'FULL NAME'
     this.expiryBeforeText = this.expiryBeforeText || 'month/year'
     this.expiryAfterText = this.expiryAfterText || 'valid thru'
-    this.subscribeToValues()
+    this.addDataValues()
+    // this.subscribeToValues()
     this.ngxccService.cardOptionsSubject.subscribe(([cardOptions, flipped]) => {
       this.flipped = flipped
       if (cardOptions && cardOptions.card && cardOptions.card.type) {
@@ -59,6 +60,11 @@ export class NgxCreditCardsComponent implements OnInit {
       }
       this.addClass()
     })
+  }
+
+  addDataValues() {
+    // this.el.nativeElement.
+    // this.renderer.
   }
 
   subscribeToValues() {
@@ -78,5 +84,9 @@ export class NgxCreditCardsComponent implements OnInit {
 
   ngOnDestroy() {
     this.ngxccService.cardOptionsSubject.unsubscribe()
+    this.ngxccService.cardNumberSuject.unsubscribe()
+    this.ngxccService.expirySubject.unsubscribe()
+    this.ngxccService.cvvSubject.unsubscribe()
+    this.ngxccService.nameSubject.unsubscribe()
   }
 }
