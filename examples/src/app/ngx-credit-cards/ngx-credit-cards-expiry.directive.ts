@@ -23,7 +23,7 @@ export class CreditCardExpiryDirective {
   @HostListener('keyup', ['$event']) keyUp(e: any) {
     let { value } = e.target
     let validObj = cardValidator.cvv({ maxLength: this.maxLength, value })
-    this.cardService.cvv = value
+    this.cardService.expirySubject.next(value)
     this.expiryChange.emit(validObj)
   }
 

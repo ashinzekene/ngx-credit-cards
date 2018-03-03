@@ -13,7 +13,7 @@ export class NgxCreditCardsComponent implements OnInit {
   public cvv: string = ''
   public name: string = ''
   public number: string = ''
-  // public expiry: string = this.ngxccService.expiry
+  public expiry: string = ''
   public type: string = ''
   public length: number = 16
   public isAmex: boolean = false
@@ -54,12 +54,25 @@ export class NgxCreditCardsComponent implements OnInit {
     this.namePlaceholder = this.namePlaceholder || 'FULL NAME'
     this.expiryBeforeText = this.expiryBeforeText || 'month/year'
     this.expiryAfterText = this.expiryAfterText || 'valid thru'
+    this.subscribeToValues()
     this.ngxccService.cardOptionsSubject.subscribe(([cardOptions, flipped]) => {
       this.flipped = flipped
       if (cardOptions && cardOptions.card && cardOptions.card.type) {
         this.type = cardOptions.card.type
       }
       this.addClass()
+    })
+  }
+
+  subscribeToValues() {
+    this.ngxccService.cardNumberSuject.subscribe(number => {
+      this.number = number
+    })
+    this.ngxccService.expirySubject.subscribe(expiry => {
+      this.expiry = expiry
+    })
+    this.ngxccService.cvvSubject.subscribe(cvv => {
+      this.cvv = `${cvv}`
     })
   }
 

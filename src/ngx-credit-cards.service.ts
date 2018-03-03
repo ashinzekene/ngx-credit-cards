@@ -9,50 +9,49 @@ export class NgxCreditCardsService {
   private _expiry: string
   public goNext: boolean
   private _cardOptions: Subject<[ValidityOptions, boolean]> = new Subject()
+  private _cardNumberSubject: Subject<string> = new Subject()
+  private _cvvSubject: Subject<number> = new Subject()
+  private _expirySubject: Subject<string> = new Subject()
   constructor() { }
 
   /**
-   * Checks if card c
+   * @description Returns a subscribable subject that resolves the card number
    */
-  goBack
-  /**
-   * @description Return the value of the card number
-   */
-  get cardNumber(): string | number {
-    return this._cardNumber
+  get cardNumberSuject(): Subject<string> {
+    return this._cardNumberSubject
   }
 
   /**
    * @description sets the value of the card number
-   * @param value The card value 
+   * @param value The card number 
    */
-  set cardNumber(value) {
-    this._cardNumber = value
+  set cardNumber(value: string) {
+    this._cardNumberSubject.next(value)
   }
 
 
   /**
-   * @description Return the value of the card number
+   * @description Returns a subscribable subject that resolves the card expiry date
    */
-  get expiry(): string {
-    return this._expiry
+  get expirySubject(): Subject<string> {
+    return this._expirySubject
   }
 
 
   /**
    * @description sets the value of the card number
-   * @param value The card value 
+   * @param value The card value
    */
-  set expiry(value) {
-    this._expiry = `${value}`
+  set expiry(value: string) {
+    this._expirySubject.next(value)
   }
 
 
   /**
-   * @description Return the value of the cvv number
+   * @description Returns a subscribable subject that resolves the card cvv
    */
-  get cvv(): number {
-    return this._cvv
+  get cvvSubject(): Subject<number> {
+    return this._cvvSubject
   }
 
 
@@ -61,7 +60,7 @@ export class NgxCreditCardsService {
    * @param value The card value 
    */
   set cvv(value) {
-    this._cvv = value * 1
+    this._cvvSubject.next(value * 1)
   }
 
 

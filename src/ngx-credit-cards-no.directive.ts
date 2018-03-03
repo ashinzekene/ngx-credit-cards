@@ -25,7 +25,7 @@ export class CreditCardNoDirective {
   //  This runs on keyup of the element conatining the directive and outputs the card number validity
   @HostListener('keyup', ['$event']) keyUp(e: any) {
     let { value } = e.target
-    this.cardService.cardNumber = value
+    this.cardService.cardNumberSuject.next(value)
     // This sets the validity Subject using .next operator. This is done in the card service
     this.cardService.cardOptions = [cardValidator.number(value), false]
     this.numChange.emit(cardValidator.number(value))

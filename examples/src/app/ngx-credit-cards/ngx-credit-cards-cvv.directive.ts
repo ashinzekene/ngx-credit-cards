@@ -19,7 +19,7 @@ export class CreditCardCvvDirective {
   @HostListener('keyup', ['$event']) cvvKeyUp(e: any) {
     let { value } = e.target
     let validObj = cardValidator.cvv({ maxLength: this.maxLength, value })
-    this.cardService.cvv = value
+    this.cardService.cvvSubject.next(value)
     this.cvvChange.emit(validObj)
   }
 

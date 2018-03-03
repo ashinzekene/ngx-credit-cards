@@ -12,12 +12,14 @@
         <label for="">No:</label>
         <input class="form-control" ngxCardNo (numChange)="checkNumber($event)" type="text">
       </div>
-      <label for="">Expiry:</label>
-      <input class="form-control" ngxCardExpiry (cvvChange)="checkNumber($event)" type="text">
-    </div>
-    <div class="form-group">
-      <label for="">Cvv:</label>
-      <input class="form-control" ngxCardCvv (expiryChange)="checkNumber($event)" type="text">
+      <div class="form-group">
+        <label for="">Expiry:</label>
+        <input class="form-control" ngxCardExpiry (cvvChange)="checkNumber($event)" type="text">
+      </div>
+      <div class="form-group">
+        <label for="">Cvv:</label>
+        <input class="form-control" ngxCardCvv (expiryChange)="checkNumber($event)" type="text">
+      </div>
     </div>
   </div>
 </div>
