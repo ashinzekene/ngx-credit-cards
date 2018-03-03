@@ -12,6 +12,7 @@ export class NgxCreditCardsService {
   private _cardNumberSubject: Subject<string> = new Subject()
   private _cvvSubject: Subject<number> = new Subject()
   private _expirySubject: Subject<string> = new Subject()
+  private _nameSubject: Subject<string> = new Subject()
   constructor() { }
 
   /**
@@ -80,4 +81,10 @@ export class NgxCreditCardsService {
     this._cardOptions.next(value)
   }
 
+  /**
+   * @description Return the card holder's name
+   */
+  get nameSubject(): Subject<string> {
+    return this._nameSubject
+  }
 }

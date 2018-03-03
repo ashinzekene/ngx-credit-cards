@@ -43,9 +43,6 @@ export class NgxCreditCardsComponent implements OnInit {
     let name = 'ng-credit-card--' + this.type
     this.imageClassObject = { 'ng-credit-card__logo': true, [name]: true }
     this.creditCardClassObject = { 'ng-credit-card': true, [name]: true, 'ng-credit-card--flipped': this.flipped }
-    console.log('Type', this.type)
-    console.table(this.imageClassObject)
-    console.table(this.creditCardClassObject)
   }
 
   ngOnInit() {
@@ -73,6 +70,9 @@ export class NgxCreditCardsComponent implements OnInit {
     })
     this.ngxccService.cvvSubject.subscribe(cvv => {
       this.cvv = `${cvv}`
+    })
+    this.ngxccService.nameSubject.subscribe(name => {
+      this.name = name
     })
   }
 
