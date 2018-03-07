@@ -7,8 +7,8 @@
         <div *ngIf="type === 'american-express'" [ngClass]="{ 'ng-credit-card__cvc_front': true, 'ng-credit-card__display': true, 'ng-credit-card--focused': false }">437</div>
         <div [ngClass]="{ 'ng-credit-card__number': true, 'ng-credit-card__display': true, 'ng-credit-card--focused': true }">{{ number }}</div>
         <div *ngIf="!hideName" [ngClass]="{ 'ng-credit-card__name': true, 'ng-credit-card__display': true, 'ng-credit-card--focused': true }">{{ name }}</div>
-        <div [ngClass]="{ 'ng-credit-card__expiry': true, 'ng-credit-card__display': true, 'ng-credit-card--focused': true }" [dataset.before]="expiryBeforeText"
-          [dataset.after]="expiryAfterText">
+        <div [ngClass]="{ 'ng-credit-card__expiry': true, 'ng-credit-card__display': true, 'ng-credit-card--focused': true }" data-before="expiryBeforeText"
+          data-after="expiryAfterText">
           {{ expiry }}
         </div>
       </div>
@@ -16,7 +16,7 @@
     <div class="ng-credit-card__back">
       <div class="ng-credit-card__bar"></div>
       <div [ngClass]="{ 'ng-credit-card__cvc': true, 'ng-credit-card__display': true, 'ng-credit-card--focused': true }">{{ cvv }}</div>
-      <div class="ng-credit-card__shiny" [dataset.after]="backDescriptionText"></div>
+      <div class="ng-credit-card__shiny" data-after="backDescriptionText"></div>
     </div>
   </div>
 </div>
