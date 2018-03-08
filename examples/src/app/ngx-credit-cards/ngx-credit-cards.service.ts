@@ -27,7 +27,6 @@ export class NgxCreditCardsService {
    * @param value The card number 
    */
   set cardNumber(value: string) {
-    console.log("Setting card no")    
     this._cardNumberSubject.next(value)
   }
 
@@ -45,7 +44,6 @@ export class NgxCreditCardsService {
    * @param value The card value
    */
   set expiry(value: string) {
-    console.log("Setting expiry")
     this._expirySubject.next(value)
   }
 
@@ -63,7 +61,6 @@ export class NgxCreditCardsService {
    * @param value The card value 
    */
   set cvv(value: string) {
-    console.log("Setting cvv")
     this._cvvSubject.next(value)
   }
 
@@ -95,7 +92,6 @@ export class NgxCreditCardsService {
  * @param value The card value 
  */
   set name(value: string) {
-    console.log("Setting name")
     this._nameSubject.next(value)
   }
 }

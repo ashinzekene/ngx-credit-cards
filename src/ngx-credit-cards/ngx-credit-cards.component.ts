@@ -69,19 +69,15 @@ export class NgxCreditCardsComponent implements OnInit {
 
   subscribeToValues() {
     this.ngxccService.cardNumberSuject.subscribe(number => {
-      console.log("number", number)
       this.number = number
     })
     this.ngxccService.expirySubject.subscribe(expiry => {
-      console.log("expiry", expiry)
       this.expiry = expiry
     })
     this.ngxccService.cvvSubject.subscribe(cvv => {
-      console.log("cvv", cvv)
       this.cvv = `${cvv}`
     })
     this.ngxccService.nameSubject.subscribe(name => {
-      console.log("name", name)
       this.name = name
     })
   }

@@ -18,9 +18,9 @@ export class CreditCardCvvDirective {
   //  This runs on keyup of the element conatining the directive and outputs the card number validity
   @HostListener('keyup', ['$event']) cvvKeyUp(e: any) {
     let { value } = e.target
-    let validObj = cardValidator.cvv({ maxLength: this.maxLength, value })
+    // let validObj = cardValidator.cvv({ maxLength: this.maxLength, value })
     this.cardService.cvv = value
-    this.cvvChange.emit(validObj)
+    // this.cvvChange.emit(validObj)
   }
 
   /**
