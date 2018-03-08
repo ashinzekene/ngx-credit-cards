@@ -10,7 +10,7 @@ export class CreditCardNameDirective {
   //  This runs on keyup of the element conatining the directive and outputs the card expiry validity
   @HostListener('keyup', ['$event']) keyUp(e: any) {
     let { value } = e.target
-    this.cardService.nameSubject.next(value)
+    this.cardService.name = value
     this.nameChange.emit(value)
   }
 
