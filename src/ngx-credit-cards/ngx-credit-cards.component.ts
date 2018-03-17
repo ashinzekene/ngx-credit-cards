@@ -22,9 +22,9 @@ export class NgxCreditCardsComponent implements OnInit {
   public flipped: boolean = false
   @Input() hideName: boolean = true
   @Input() namePlaceholder: string = 'FULL NAME'
-  @Input() expiryBeforeText: string = 'month/year'
-  @Input() expiryAfterText: string = 'valid thru'
-  @Input() backDescriptionText: string = 'This card remains a property of my bank'
+  @Input() expiryBeforeText: string = '13/2018'
+  @Input() expiryAfterText: string = 'No expiry'
+  @Input() backDescriptionText: string = 'backDescriptionText'
 
   constructor(private ngxccService: NgxCreditCardsService, private renderer: Renderer2, private el: ElementRef) { }
 

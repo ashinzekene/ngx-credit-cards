@@ -6,7 +6,11 @@
 
 <div class="container">
   <div class="form-group">
-    <ngx-credit-cards></ngx-credit-cards>
+    <ngx-credit-cards
+      [hideName]="false"
+      [namePlaceholder]="'Enter Name'"
+      [backDescriptionText]="'This card remains a property of my bank'"
+    ></ngx-credit-cards>
     <div class="container">
       <div class="form-group">
         <label for="">Name:</label>

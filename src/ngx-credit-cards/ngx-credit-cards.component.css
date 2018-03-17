@@ -84,10 +84,11 @@
   top: 0;
 }
 
-.ng-credit-card__number{
+.ng-credit-card__number {
   font-family: "Bitstream Vera Sans Mono", Consolas, Courier, monospace;
-  font-size: 24px;
+  font-size: 22px;
   clear: both;
+  margin-top: 5px;
   margin-bottom: 30px;
 }
 
@@ -155,7 +156,7 @@
 .ng-credit-card__shiny{
   width: 50px;
   height: 35px;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
   border-radius: 5px;
   background: #CCC;
   position: relative;
