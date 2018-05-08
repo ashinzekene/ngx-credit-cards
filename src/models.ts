@@ -14,4 +14,4 @@ export class ValidityOptions {
   };
   isPotentiallyValid: boolean;
   isValid: boolean
-} 
+}
