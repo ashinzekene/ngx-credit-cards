@@ -48,7 +48,7 @@
     "zone.js": "^0.8.10"
   },
   "dependencies": {
-    "card-validator": "^4.3.0",
+    "card-validator": "^6.2.0",
     "payment-formatter": "^1.0.2"
   }
 }
